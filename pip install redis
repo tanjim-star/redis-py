@@ -1,0 +1,16 @@
+# OmniFile Master Suite key-value pairs
+omni_file_features = {
+    "Multi-Format Support": "MindIQ supports all major file types such as PDFs, Word documents, images, videos, spreadsheets, and more.",
+    "File Analysis & Summarization": "MindIQ can analyze uploaded files to provide summaries, extract key insights, or gather specific information.",
+    "OCR for Handwritten Notes": "MindIQ can read and digitize handwritten notes, improving accuracy over time by learning unique handwriting styles.",
+    "Secure File Storage": "MindIQ offers cloud-based encrypted file storage, ensuring secure access to user data across devices."
+}
+
+# Store OmniFile Master Suite in Redis
+for feature, description in omni_file_features.items():
+    r.hset("OmniFile_Master_Suite", feature, description)
+
+# Retrieve and print stored data
+omni_file_data = r.hgetall("OmniFile_Master_Suite")
+for key, value in omni_file_data.items():
+    print(f"{key.decode()}: {value.decode()}")
